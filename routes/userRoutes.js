@@ -49,7 +49,7 @@ router.post("/login", async(req, res)=>{
             return res.status(400).json({response:"email or password is invalid"});
         }
         let gentoken = await generateToken(findAccount._id);
-        return res.status(201).json({messsage:"logged in", token:gentoken});
+        return res.status(201).json({response:true, token:gentoken});
 
     } catch (error) {
         return res.status(500).send("server error");
