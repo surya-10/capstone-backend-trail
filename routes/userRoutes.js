@@ -42,7 +42,7 @@ router.post("/login", async(req, res)=>{
         let findAccount = await findUser(email);
         console.log(findAccount)
         if(!findAccount){
-            return res.status(400).json({response:"Email does not exist. go and signup"})
+            return res.status(400).json({response:false})
         }
         let pasCheck = await bcrypt.compare(password, findAccount.password);
         if(!pasCheck){
