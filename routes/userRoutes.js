@@ -46,7 +46,7 @@ router.post("/login", async(req, res)=>{
         }
         let pasCheck = await bcrypt.compare(password, findAccount.password);
         if(!pasCheck){
-            return res.status(400).json({response:"email or password is invalid"});
+            return res.status(400).json({response:"invalid"});
         }
         let gentoken = await generateToken(findAccount._id);
         return res.status(201).json({response:true, token:gentoken});
