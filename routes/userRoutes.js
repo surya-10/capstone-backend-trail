@@ -50,7 +50,7 @@ router.post("/login", async(req, res)=>{
         }
         let gentoken = await generateToken(findAccount._id);
         console.log(gentoken)
-        return res.status(201).json({response:true, token:gentoken});
+        return res.status(201).json({response:true, token:gentoken, username:findAccount.username});
 
     } catch (error) {
         return res.status(500).send("server error");
