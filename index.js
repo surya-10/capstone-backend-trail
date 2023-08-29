@@ -11,5 +11,5 @@ let app = express();
 app.use(cors())
 let port = 9000;
 app.use(express.json());
-app.use("/", isAuth, userRouter);
+app.use("/", userRouter);
 app.listen(port, ()=>console.log("server connected"));
