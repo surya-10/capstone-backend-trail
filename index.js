@@ -13,5 +13,5 @@ app.use(cors())
 let port = 9000;
 app.use(express.json());
 app.use("/", userRouter);
-app.use("/", bmiRouter);
+app.use("/", isAuth, bmiRouter);
 app.listen(port, ()=>console.log("server connected"));
