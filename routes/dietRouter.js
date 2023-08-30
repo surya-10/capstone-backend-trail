@@ -4,7 +4,9 @@ let dietRouter = express.Router();
 
 dietRouter.post("/diet-app", (req, res)=>{
     try {
+        
         let {age, height, weight} = req.body;
+        console.log(req,body)
         if(age<=2){
             return res.status(400).json({messsgae:"age should be greater than 2", response:false})
         }
