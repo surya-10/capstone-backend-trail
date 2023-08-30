@@ -15,3 +15,4 @@ dietRouter.post("/diet-app", (req, res)=>{
         return res.status(500).send("server error");
     }
 })
+export let bmiRouter = dietRouter; 
