@@ -2,6 +2,7 @@ import express from "express";
 import bcrypt from "bcrypt";
 import { addUser, findUser, generateToken } from "../database/users.js";
 
+
 let router = express.Router();
 
 router.get("/check", (req, res)=>{

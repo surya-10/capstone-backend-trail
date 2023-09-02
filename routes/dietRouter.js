@@ -40,7 +40,7 @@ dietRouter.post("/diet-suggestion", async(req, res)=>{
         }
         else if(userBmi>=30.0 && userBmi<=44.9){
             minValue = 30.0;
-            maXvalue = 44.9;
+            maXvalue = 49.9;
         }
         // console.log(typeof(userBmi));
         let getFoodSuggestion = await getFoods(minValue, maXvalue);
