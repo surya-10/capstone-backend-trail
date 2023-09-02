@@ -11,7 +11,7 @@ import { bmiRouter } from "./routes/dietRouter.js";
 
 let app = express();
 app.use(cors())
-let port = 9000;
+let port =  process.env.port || 9000;
 app.use(bodyParser.json());
 app.use(express.json());
 app.use("/", userRouter);
