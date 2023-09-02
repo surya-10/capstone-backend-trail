@@ -1,6 +1,7 @@
 import { MongoClient } from "mongodb";
-
-let connectionStr = "mongodb+srv://capstone:capstone@cluster0.hwlnde9.mongodb.net/?retryWrites=true&w=majority"
+import dotenv from "dotenv";
+dotenv.config();
+let connectionStr = process.env.str;
 export async function mongoConnection(){
     let client = new MongoClient(connectionStr);
     await client.connect();
