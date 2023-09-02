@@ -8,7 +8,6 @@ import { client } from "./db.js";
 import { userRouter } from "./routes/userRoutes.js";
 import { isAuth } from "./authentication/auth.js";
 import { bmiRouter } from "./routes/dietRouter.js";
-
 let app = express();
 app.use(cors())
 let port =  process.env.port || 9000;
