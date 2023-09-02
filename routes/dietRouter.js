@@ -14,7 +14,7 @@ dietRouter.post("/diet-app", async (req, res)=>{
         }
         let heightInMeter = height/100;
         let bmi = weight/(heightInMeter*heightInMeter);
-        return res.status(200).json({message:"success", response:true, userBmi:bmi.toFixed(2), token:true});
+        return res.status(200).json({message:"success", response:true, userBmi:bmi.toFixed(1), token:true});
     } catch (error) {
         return res.status(500).send("server error");
     }
