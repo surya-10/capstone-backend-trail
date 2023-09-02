@@ -1,5 +1,5 @@
 import express from "express";
-import { getFoods, insertData } from "../database/users.js";
+import { getFoods } from "../database/users.js";
 
 let dietRouter = express.Router();
 
