@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { client } from "../db.js";
 import jwt from "jsonwebtoken";
 
@@ -19,5 +20,7 @@ export async function getFoods(mini, maxi){
     // console.log(a);
     return a;
 }
-
-
+export async function updatePassword(id, password){
+    let a = await client.db("users").collection("registeredUSer").updateOne({_id:new ObjectId(id)}, {$set:{password:password}});
+    return a.acknowledged
+}

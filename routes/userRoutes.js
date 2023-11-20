@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import { addUser, findUser, generateToken } from "../database/users.js";
+import { addUser, findUser, generateToken, updatePassword } from "../database/users.js";
 
 
 let router = express.Router();
@@ -53,6 +53,37 @@ router.post("/login", async(req, res)=>{
         console.log(gentoken)
         return res.status(201).json({response:true, token:gentoken, username:findAccount.username});
 
+    } catch (error) {
+        return res.status(500).send("server error");
+    }
+})
+
+router.post("/forgot", async(req, res)=>{
+    try {
+        let {email} = req.body;
+        let checkEmail = await findUser(email);
+        if(!checkEmail){
+            return res.status(404).send({status:404, msg:"not found"})
+        }
+        return res.status(200).send({status:200, msg:"success", id:checkEmail._id});
+    } catch (error) {
+        return res.status(500).send("server error");
+    }
+})
+router.post("/update/:id", async(req, res)=>{
+    try {
+        let {id} = req.params;
+        // console.log(id);
+        let {password} = req.body;
+        let saltValue = await bcrypt.genSalt(10);
+        let hashedPassword = await bcrypt.hash(password, saltValue);
+        let updateNewPassword = await updatePassword(id, hashedPassword);
+        if(updateNewPassword){
+            return res.status(200).send({status:200, msg:"success"});
+        }
+        else{
+            return res.status(404).send({status:404, msg:"failed"});
+        }
     } catch (error) {
         return res.status(500).send("server error");
     }
